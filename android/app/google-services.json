@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "240002468968",
+    "firebase_url": "https://juridico-especializado-default-rtdb.firebaseio.com",
+    "project_id": "juridico-especializado",
+    "storage_bucket": "juridico-especializado.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240002468968:android:c4a0fe96d0417f952d7fdd",
+        "android_client_info": {
+          "package_name": "com.example.escritorio_advocacia_especilizado"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ObepdjGD3KKIodtWF5YRCUHttIp_liM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

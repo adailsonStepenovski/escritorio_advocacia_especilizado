@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "juridico-especializado",
+    "dev": "juridico-especializado"
+  },
+  "targets": {},
+  "etags": {}
+}
