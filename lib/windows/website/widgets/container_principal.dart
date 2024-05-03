@@ -1,6 +1,8 @@
+import 'package:escritorio_advocacia_especilizado/utils/widgets/colors_customs.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/contantes.dart';
+import '../../../utils/widgets/custom_text.dart';
 
 
 class ContainerPrincipal extends StatelessWidget {
@@ -10,30 +12,30 @@ class ContainerPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height:  height(context: context, size: .4),
-      width: double.infinity,
-      child: Center(
-        child: Stack(
-          children: [
-            Container(
+      width: double.infinity,color: Colors.transparent.withOpacity(0.2),
+      child: Stack(
+        children: [
+          Align(alignment: Alignment.centerRight,
+            child: SizedBox(
                 height:  height(context: context, size: .4),
-                width: double.infinity,
-                color: Colors.transparent.withOpacity(0.2),
-                child: Image.asset('assets/capa.jpeg',
-                  width: double.infinity,)),
-            Center(
-              child: Text(
-                label,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 48,
-                  color: Colors.white,
-                ),
-              ),
+
+
+                child: Image.asset('assets/capa_sem_fundo.png',
+                  )),
+          ),
+          Center(
+            child: TextBold(text:
+              label,
+              textAlign: TextAlign.center,
+
+                fontSize: 86,
+                fontColor: CustomColors.white,
+
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

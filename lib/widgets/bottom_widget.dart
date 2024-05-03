@@ -28,7 +28,7 @@ class BottomWidegt extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 15),
               child: Image.asset(
-                logo(),
+                logoLosangulo(),
                 width: width(context: context, size: .35),
                 height: height(context: context, size: .3),
               ),

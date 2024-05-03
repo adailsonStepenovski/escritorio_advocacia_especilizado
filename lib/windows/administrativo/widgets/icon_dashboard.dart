@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/widgets/colors_customs.dart';
+import '../../../../widgets/widgets/colors_customs.dart';
 
 class IconDashboard extends StatelessWidget {
   final IconData icon;

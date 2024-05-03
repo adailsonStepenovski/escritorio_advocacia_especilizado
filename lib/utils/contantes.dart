@@ -8,7 +8,7 @@ double height({required BuildContext context, required double size}) {
   return MediaQuery.of(context).size.height * size;
 }
 
-String logo() {return"assets/logo.png";}
+String logo() {return"assets/logo_sem_fundo.png";}
 String logoLosangulo() {return"assets/logo_losangulo.png";}
 double fontSize({required BuildContext context}) {
   return MediaQuery.of(context).size.width <= 800

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class CustomDrawer extends StatefulWidget {
   @override
   CustomDrawerState createState() {
-    return new CustomDrawerState();
+    return CustomDrawerState();
   }
 
-  CustomDrawer();
+  const CustomDrawer({super.key});
 }
 
 class CustomDrawerState extends State<CustomDrawer> {
@@ -18,74 +18,69 @@ class CustomDrawerState extends State<CustomDrawer> {
 
     return Drawer(
         child: Scrollbar(
-            child: Container(
-              child: SingleChildScrollView(
-                child: Container(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              top: MediaQuery.of(context).size.height * .1, left: 10),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    menuButton(context, 'Favoritos',
-                                        Icons.monitor_heart, false, () {}),
+            child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * .1, left: 10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                menuButton(context, 'Favoritos',
+                                    Icons.monitor_heart, false, () {}),
 
-                                    menuButton(context, 'Sair', Icons.exit_to_app, true,
-                                            () {
-                                          doLogout(context);
-                                        }),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    CupertinoButton(
-                                      onPressed: () {
-                                        ;
-                                      },
-                                      child: Text(
-                                        'Versão',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                    ),
-                                    CupertinoButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'F.A.Q',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                    ),
-
-                                  ],
-                                ),
-                              )
-                            ],
+                                menuButton(context, 'Sair', Icons.exit_to_app, true,
+                                        () {
+                                      doLogout(context);
+                                    }),
+                              ],
+                            ),
                           ),
-                        ),
-                      ]),
-                ),
-              ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CupertinoButton(
+                                  onPressed: () {
+                                  },
+                                  child: const Text(
+                                    'Versão',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ),
+                                CupertinoButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'F.A.Q',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ]),
             )));
   }
 
@@ -97,39 +92,37 @@ class CustomDrawerState extends State<CustomDrawer> {
   }
 
   Widget menuButton(context, text, icon, isLogout, onPress) {
-    return Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: InkWell(
-            onTap: onPress,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(width: 15),
-                Icon(
-                  icon,
-                  color: !isLogout ? Colors.white : Colors.white,
-                  size: 24,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                    child: Expanded(
-                      child: Text(
-                        text,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ))
-                //Icon(Icons.arrow_forward_ios)
-              ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: InkWell(
+        onTap: onPress,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            const SizedBox(width: 15),
+            Icon(
+              icon,
+              color: !isLogout ? Colors.white : Colors.white,
+              size: 24,
             ),
-          ),
-        ));
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.bold),
+              ),
+            )
+            //Icon(Icons.arrow_forward_ios)
+          ],
+        ),
+      ),
+    );
   }
 
   doLogout(context) async {

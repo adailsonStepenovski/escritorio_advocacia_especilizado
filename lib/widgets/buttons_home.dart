@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mdi/mdi.dart';
 
 import '../utils/contantes.dart';
 
@@ -6,16 +7,18 @@ class ButtonsHome extends StatefulWidget {
   final Function() onPressedHome;
   final Function() onPressedEscritorio;
   final Function() onPressedAreasAtuacao;
-  final Function() onPressedCompliance;
+  final Function() onPressedAcessoRestrito;
   final Function() onPressedNoticias;
   final Function() onPressedFaleConosco;
 
-  const ButtonsHome(
+  const
+
+  ButtonsHome(
       {super.key,
       required this.onPressedHome,
       required this.onPressedEscritorio,
       required this.onPressedAreasAtuacao,
-      required this.onPressedCompliance,
+      required this.onPressedAcessoRestrito,
       required this.onPressedNoticias,
       required this.onPressedFaleConosco});
 
@@ -42,17 +45,17 @@ class _ButtonsHomeState extends State<ButtonsHome> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _buildIconButton('Home', Colors.red, widget.onPressedHome),
+              _buildIconButton('Home', Colors.red,Mdi.home, widget.onPressedHome),
               _buildIconButton(
-                  'Escritório', Colors.blue, widget.onPressedEscritorio),
-              _buildIconButton('Áreas de Atuação', Colors.green,
+                  'Escritório', Colors.blue,Mdi.desk, widget.onPressedEscritorio),
+              _buildIconButton('Áreas de Atuação', Colors.green,Mdi.chat,
                   widget.onPressedAreasAtuacao),
               _buildIconButton(
-                  'Compliance', Colors.orange, widget.onPressedCompliance),
+                  'Notícias', Colors.purple,Mdi.fileDocument, widget.onPressedNoticias),
               _buildIconButton(
-                  'Notícias', Colors.purple, widget.onPressedNoticias),
+                  'Fale Conosco', Colors.yellow,Mdi.chat, widget.onPressedFaleConosco),
               _buildIconButton(
-                  'Fale Conosco', Colors.yellow, widget.onPressedFaleConosco),
+                  'Acesso Restrito', Colors.yellow,Mdi.chat, widget.onPressedAcessoRestrito),
             ],
           ),
         ],
@@ -60,12 +63,12 @@ class _ButtonsHomeState extends State<ButtonsHome> {
     );
   }
 
-  Widget _buildIconButton(String label, Color color, Function() onPressed) {
+    Widget _buildIconButton(String label, Color color, IconData icon, Function() onPressed) {
     return SizedBox(
       width: width(context: context, size: .12),
       child: IconButton(
         focusColor: const Color(0xFF092A53),
-        icon: SizedBox(
+        icon: MediaQuery.of(context).size.width <= 800?Icon(icon):SizedBox(
             width: width(context: context, size: .12),
             child: Text(
               label,style: TextStyle(fontSize: fontSize(context: context)),

@@ -8,11 +8,11 @@ class PainelController extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 2,
-      child: Container(
+      child: SizedBox(
         height: height(context: context, size: .03),
         width: width(context: context, size: 1),
         child: ElevatedButton(
-          child: Text('novo'),
+          child: const Text('novo'),
           onPressed: () {},
         ),
       ),

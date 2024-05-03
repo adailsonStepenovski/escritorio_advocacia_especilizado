@@ -3,14 +3,14 @@ import 'package:flutter/cupertino.dart';
 class AreaTrabalhoPage extends StatelessWidget {
   final String label;
 
-  const AreaTrabalhoPage({required this.label});
+  const AreaTrabalhoPage({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
         label,
-        style: TextStyle(fontSize: 24),
+        style: const TextStyle(fontSize: 24),
       ),
     );
   }
