@@ -8,10 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mdi/mdi.dart';
 import '../../../../utils/contantes.dart';
-import '../../../../widgets/widgets/colors_customs.dart';
-import '../../../../widgets/widgets/custom_text.dart';
-import '../../../../widgets/widgets/ui_app_textfield.dart';
-import '../../../../widgets/widgets/ui_web_button.dart';
+import '../../../../utils/widgets/colors_customs.dart';
+import '../../../../utils/widgets/custom_text.dart';
+import '../../../../utils/widgets/ui_app_textfield.dart';
+import '../../../../utils/widgets/ui_web_button.dart';
 import '../../../../widgets/src/ui_dialog_web.dart';
 
 class CadastrarEvento extends StatefulWidget {

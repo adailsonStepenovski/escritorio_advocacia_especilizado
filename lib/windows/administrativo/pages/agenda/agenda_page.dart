@@ -11,7 +11,7 @@ import '../../../../utils/calendario/calendario_day.dart';
 import '../../../../utils/calendario/format_date_time.dart';
 import '../../../../utils/calendario/separar_por datas.dart';
 import '../../../../utils/contantes.dart';
-import '../../../../widgets/widgets/custom_text.dart';
+import '../../../../utils/widgets/custom_text.dart';
 import 'widgets/calendario_header.dart';
 
 class AgendaPage extends StatefulWidget {

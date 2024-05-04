@@ -3,12 +3,12 @@ import 'package:mdi/mdi.dart';
 import 'package:screenshot/screenshot.dart';
 import '../../../../core/models/socios.dart';
 import '../../../../utils/contantes.dart';
-import '../../../../widgets/widgets/colors_customs.dart';
-import '../../../../widgets/widgets/custom_text.dart';
-import '../../../../widgets/widgets/ui_card.dart';
-import '../../../../widgets/widgets/ui_card_avatar.dart';
-import '../../../../widgets/widgets/ui_card_button.dart';
-import '../../../../widgets/widgets/ui_tile_card.dart';
+import '../../../../utils/widgets/colors_customs.dart';
+import '../../../../utils/widgets/custom_text.dart';
+import '../../../../utils/widgets/ui_card.dart';
+import '../../../../utils/widgets/ui_card_avatar.dart';
+import '../../../../utils/widgets/ui_card_button.dart';
+import '../../../../utils/widgets/ui_tile_card.dart';
 
 class SociosListItem extends StatefulWidget {
   final Socios socios;

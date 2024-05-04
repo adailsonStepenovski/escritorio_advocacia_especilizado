@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum APPTextFieldType { NULL, UNOMED, SENHA, CONFIRMESENHA, EMAIL }
+enum APPTextFieldType { nulo, senha, confirmeSenha, email }
 
 class APPTextFieldUtil {
   static const fieldMap = {
@@ -11,7 +11,7 @@ class APPTextFieldUtil {
   };
 
   static setTextFieldConfig(APPTextFieldType type) {
-    _map({String? label, Widget? icon, bool? required, Widget? suffixIcon}) => {
+    map({String? label, Widget? icon, bool? required, Widget? suffixIcon}) => {
           "label": label,
           "icon": icon,
           "required": required,
@@ -19,25 +19,20 @@ class APPTextFieldUtil {
         };
 
     switch (type) {
-      case APPTextFieldType.NULL:
+      case APPTextFieldType.nulo:
         return null;
-      case APPTextFieldType.UNOMED:
-        return _map(
-            label: "Unomed",
-            //icon: Assets.images.icons.itemConsumo.svg(height: 80),
-            required: true);
-      case APPTextFieldType.SENHA:
-        return _map(
+      case APPTextFieldType.senha:
+        return map(
             label: "Senha",
             //icon: Assets.images.icons.itemConsumo.svg(height: 80),
             required: true);
-      case APPTextFieldType.CONFIRMESENHA:
-        return _map(
+      case APPTextFieldType.confirmeSenha:
+        return map(
             label: "Confirme a senha",
             //icon: Assets.images.icons.itemConsumo.svg(height: 80),
             required: true);
-      case APPTextFieldType.EMAIL:
-        return _map(
+      case APPTextFieldType.email:
+        return map(
             label: "E-mail",
             //icon: Assets.images.icons.itemConsumo.svg(height: 80),
             required: true);

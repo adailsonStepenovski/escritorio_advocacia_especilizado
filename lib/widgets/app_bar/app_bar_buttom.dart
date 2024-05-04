@@ -1,10 +1,9 @@
-
+import 'package:escritorio_advocacia_especilizado/utils/widgets/colors_customs.dart';
+import 'package:escritorio_advocacia_especilizado/utils/widgets/custom_text.dart';
 import 'package:escritorio_advocacia_especilizado/widgets/app_bar/ui_type_app.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/contantes.dart';
-import '../widgets/colors_customs.dart';
-import '../widgets/custom_text.dart';
 
 class AppBarButtom extends StatelessWidget {
   final String? label;

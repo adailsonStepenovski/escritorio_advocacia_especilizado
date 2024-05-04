@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../contantes.dart';
 
@@ -6,49 +7,43 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final String? label;
   final String? errorText;
+  final int? maxLines;
   final bool? obscureText;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     this.prefixIcon,
     this.label,
     this.errorText,
-    this.obscureText = false,
+    this.obscureText,
     this.keyboardType,
-    this.controller,
-  }) : super(key: key);
+    this.controller, this.maxLines=1,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height(context: context, size: 0.05),
-      width: width(context: context, size: 0.4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.0),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: const Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: keyboardType,
-        obscureText: obscureText!,
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-          labelText: label,
-          prefixIcon: prefixIcon,
-          errorText: errorText,
-          border: InputBorder.none,
+    return TextField(
+      controller: controller, obscureText: obscureText ?? false,keyboardType: keyboardType,maxLines: maxLines,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: prefixIcon,
+        errorText: errorText,
+        labelStyle:  GoogleFonts.oldStandardTt(fontSize: MediaQuery.of(context).size.width <= 1200
+        ?width(context: context, size: .015):width(context: context, size: .01,)),
+        // Tamanho do texto acima do campo de entrada
+        border: OutlineInputBorder(
+          // Borda do campo de entrada
+          borderRadius: BorderRadius.circular(10.0),
         ),
+        contentPadding: const EdgeInsets.symmetric(
+            vertical: 20,
+            horizontal: 16), // Espaçamento interno do campo de entrada
       ),
+      style: GoogleFonts.oldStandardTt(
+          fontSize: MediaQuery.of(context).size.width <= 1200
+    ?width(context: context, size: .015):width(context: context, size: .01)), // Tamanho do texto dentro do campo de entrada
     );
   }
 }

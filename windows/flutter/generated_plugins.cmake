@@ -4,6 +4,8 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   cloud_firestore
+  custom_text_form_field_plus
+  file_selector_windows
   firebase_auth
   firebase_core
   firebase_storage

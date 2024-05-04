@@ -34,7 +34,7 @@ class _AreaDeAtuacaoPageState extends State<AreaDeAtuacaoPage> {
               child: Text('Nenhuma notícia encontrada.'),
             );
           } else {
-            return MediaQuery.of(context).size.width <= 1200
+            return MediaQuery.of(context).size.width <= 1700
                 ? Padding(
               padding: kIsWeb?const EdgeInsets.all(8.0):const EdgeInsets.only(left: 32.0,right: 32),
               child: ListView.builder(shrinkWrap: true,
@@ -45,7 +45,7 @@ class _AreaDeAtuacaoPageState extends State<AreaDeAtuacaoPage> {
                 },),
             ):GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width <= 1700
+                crossAxisCount: MediaQuery.of(context).size.width <= 2400
                     ? 2
 
                     : 3,

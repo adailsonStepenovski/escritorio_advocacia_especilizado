@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../widgets/colors_customs.dart';
+import '../../utils/widgets/colors_customs.dart';
+
 
 class UIWhiteDialog extends StatefulWidget {
   final List<Widget>? content;

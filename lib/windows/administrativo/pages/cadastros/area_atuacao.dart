@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
 import '../../../../utils/contantes.dart';
-import '../../../../widgets/widgets/colors_customs.dart';
-import '../../../../widgets/widgets/ui_app_textfield.dart';
-import '../../../../widgets/widgets/ui_web_button.dart';
+import '../../../../utils/widgets/colors_customs.dart';
+import '../../../../utils/widgets/ui_app_textfield.dart';
+import '../../../../utils/widgets/ui_web_button.dart';
 
 class CadastrarAreaAtuacao extends StatefulWidget {
   const CadastrarAreaAtuacao({super.key});

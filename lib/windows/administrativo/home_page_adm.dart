@@ -1,4 +1,4 @@
-
+import 'package:escritorio_advocacia_especilizado/utils/widgets/colors_customs.dart';
 import 'package:escritorio_advocacia_especilizado/windows/administrativo/pages/agenda/agenda_page.dart';
 import 'package:escritorio_advocacia_especilizado/windows/administrativo/pages/atendimentos.dart';
 import 'package:escritorio_advocacia_especilizado/windows/administrativo/pages/contatos.dart';
@@ -10,7 +10,6 @@ import 'package:escritorio_advocacia_especilizado/windows/administrativo/widgets
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 
-import '../../widgets/widgets/colors_customs.dart';
 import 'pages/area_trabalho.dart';
 
 class HomePageAdm extends StatefulWidget {

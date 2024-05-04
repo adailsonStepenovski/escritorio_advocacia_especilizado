@@ -7,6 +7,7 @@ class EventsService {
   Stream<List<Evento>> getEventos() {
     return eventosCollection.snapshots().map((snapshot) {
       return snapshot.docs.map((doc) {
+        print(doc.data().toString());
         return Evento.fromMap(doc.data());
       }).toList();
     });

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mdi/mdi.dart';
-import '../../../../widgets/widgets/colors_customs.dart';
-import '../../../../widgets/widgets/custom_text.dart';
+
+import '../../../utils/widgets/colors_customs.dart';
+import '../../../utils/widgets/custom_text.dart';
 import '../../website/widgets/ui_dialog.dart';
 
 Future<String?> uploadToFirebaseStorage(XFile file, String path) async {

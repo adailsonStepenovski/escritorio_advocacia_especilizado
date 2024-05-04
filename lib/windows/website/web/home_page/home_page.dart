@@ -1,6 +1,5 @@
-
-import '../../../../widgets/widgets/colors_customs.dart';
-import '../../../../widgets/widgets/custom_text.dart';
+import 'package:escritorio_advocacia_especilizado/utils/widgets/colors_customs.dart';
+import 'package:escritorio_advocacia_especilizado/utils/widgets/custom_text.dart';
 import 'package:escritorio_advocacia_especilizado/windows/website/widgets/container_principal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

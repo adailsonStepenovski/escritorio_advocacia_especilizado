@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import '../../utils/contantes.dart';
 import '../../utils/launchs/url_launch.dart';
-import '../widgets/colors_customs.dart';
+import '../../utils/widgets/colors_customs.dart';
 import 'app_bar_buttom.dart';
 
 class AppBarPreferredSize extends StatelessWidget

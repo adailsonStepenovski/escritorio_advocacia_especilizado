@@ -1,9 +1,8 @@
-
+import 'package:escritorio_advocacia_especilizado/utils/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/models/area_atuacao.dart';
 import '../../../../utils/contantes.dart';
-import '../../../../widgets/widgets/custom_text.dart';
-import '../../../../widgets/widgets/ui_card.dart';
+import '../../../../utils/widgets/ui_card.dart';
 
 class AreasAtuacaoListItem extends StatelessWidget {
   final AreasAtuacao areasAtuacao;

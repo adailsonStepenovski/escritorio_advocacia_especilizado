@@ -39,9 +39,7 @@ class UIAppButton extends StatelessWidget {
     final text = label;
     final icon = preffixIcon;
 
-    return Container(
-        constraints:
-            BoxConstraints(maxWidth: buttonWidth ?? 944, minWidth: 300),
+    return SizedBox(
         height: buttonHeight ?? 148,
         child: TextButton(
             style: ButtonStyle(

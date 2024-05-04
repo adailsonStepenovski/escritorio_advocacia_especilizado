@@ -1,7 +1,7 @@
 import 'package:escritorio_advocacia_especilizado/utils/contantes.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../widgets/widgets/colors_customs.dart';
+import '../../../utils/widgets/colors_customs.dart';
 
 class IconCadastroDashboard extends StatelessWidget {
   final IconData icon;
