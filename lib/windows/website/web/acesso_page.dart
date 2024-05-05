@@ -1,6 +1,9 @@
+import 'package:escritorio_advocacia_especilizado/core/controllers/cliente_service.dart';
+import 'package:escritorio_advocacia_especilizado/core/models/cliente.dart';
 import 'package:flutter/material.dart';
 import 'package:escritorio_advocacia_especilizado/utils/contantes.dart';
 import 'package:escritorio_advocacia_especilizado/windows/website/widgets/ui_dialog.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import 'package:mdi/mdi.dart';
 

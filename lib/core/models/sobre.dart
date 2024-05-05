@@ -1,4 +1,5 @@
 class Sobre {
+   String? id;
    String titulo;
    String descricao;
    String subtitulo;
@@ -8,11 +9,12 @@ class Sobre {
 
   @override
   String toString() {
-    return 'Usuario{titulo: $titulo, subtitulo:$subtitulo,descricao: $descricao,  created_at: $createdAt, updated_at: $updatedAt, deleted_at: $deletedAt}';
+    return 'Usuario{id: $id,titulo: $titulo, subtitulo:$subtitulo,descricao: $descricao,  created_at: $createdAt, updated_at: $updatedAt, deleted_at: $deletedAt}';
   }
 
   Sobre(
       {
+         this.id,
         required this.titulo,
         required this.subtitulo,
         required this.descricao,
@@ -22,6 +24,7 @@ class Sobre {
 
   Map<String, dynamic> toMap() {
     return {
+      "id": id,
       "descricao": descricao,
       "titulo": titulo,
       "subtitulo": subtitulo,
@@ -33,6 +36,7 @@ class Sobre {
 
    factory Sobre.fromMap(dynamic map) {
      return Sobre(
+       id: map["id"],
       descricao: map["descricao"],
        subtitulo: map["subtitulo"],
       titulo: map["titulo"],

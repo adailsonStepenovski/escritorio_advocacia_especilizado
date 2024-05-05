@@ -37,7 +37,7 @@ class AppBarPreferredSize extends StatelessWidget
                         title: 'WhatsApp',
                         typer: AppButtonTyper.text,
                         label: '(42) 9 91160111',
-                        onPressed: () => {launchUrlWhatsApp()}),
+                        onPressed: () => {launchUrlWhatsApp(celular: '(42) 9 91160111')}),
                     AppBarButtom(
                         title: 'Telefone',
                         typer: AppButtonTyper.text,

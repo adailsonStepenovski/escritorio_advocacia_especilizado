@@ -6,7 +6,9 @@ import '../../utils/widgets/colors_customs.dart';
 
 class UIWhiteDialog extends StatefulWidget {
   final List<Widget>? content;
-  const UIWhiteDialog({super.key, this.content});
+  final double? height;
+  final double? width;
+  const UIWhiteDialog({super.key, this.content, this.height, this.width});
 
   @override
   State<UIWhiteDialog> createState() => _UIWhiteDialogState();
@@ -22,8 +24,8 @@ class _UIWhiteDialogState extends State<UIWhiteDialog> {
         Padding(
           padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height * .1),
           child: Container(
-            width: MediaQuery.of(context).size.width * .5,
-            height: MediaQuery.of(context).size.height * .8,
+            width: widget.width??MediaQuery.of(context).size.width * .5,
+            height:widget.height?? MediaQuery.of(context).size.height * .8,
             decoration: BoxDecoration(
                 color: CustomColors.white,
                 borderRadius: BorderRadius.circular(40)),
@@ -31,8 +33,7 @@ class _UIWhiteDialogState extends State<UIWhiteDialog> {
             child: Padding(
               padding: const EdgeInsets.only(top: 104.0, bottom: 24),
               child: SingleChildScrollView(controller: ScrollController(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: widget.content!,
                 ),
               ),
@@ -47,7 +48,7 @@ class _UIWhiteDialogState extends State<UIWhiteDialog> {
 
             width: MediaQuery.of(context).size.height * .2,
             height: MediaQuery.of(context).size.height * .2,
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(24),
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: CustomColors.white,

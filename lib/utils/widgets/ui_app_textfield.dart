@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../contantes.dart';
+import 'font_style.dart';
 
 class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
@@ -9,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final String? errorText;
   final int? maxLines;
   final bool? obscureText;
+  final bool? enabled;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
 
@@ -18,6 +20,7 @@ class CustomTextField extends StatelessWidget {
     this.label,
     this.errorText,
     this.obscureText,
+    this.enabled=true,
     this.keyboardType,
     this.controller, this.maxLines=1,
   });
@@ -29,8 +32,8 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: prefixIcon,
-        errorText: errorText,
-        labelStyle:  GoogleFonts.oldStandardTt(fontSize: MediaQuery.of(context).size.width <= 1200
+        errorText: errorText,enabled: enabled!,
+        labelStyle: fontOldStandardTt(fontSize: MediaQuery.of(context).size.width <= 1200
         ?width(context: context, size: .015):width(context: context, size: .01,)),
         // Tamanho do texto acima do campo de entrada
         border: OutlineInputBorder(
@@ -41,7 +44,7 @@ class CustomTextField extends StatelessWidget {
             vertical: 20,
             horizontal: 16), // Espaçamento interno do campo de entrada
       ),
-      style: GoogleFonts.oldStandardTt(
+      style: fontOldStandardTt(
           fontSize: MediaQuery.of(context).size.width <= 1200
     ?width(context: context, size: .015):width(context: context, size: .01)), // Tamanho do texto dentro do campo de entrada
     );

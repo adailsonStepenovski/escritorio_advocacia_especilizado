@@ -10,10 +10,12 @@ import 'package:flutter/material.dart';
 import 'core/controllers/usuario_controller.dart';
 import 'core/models/usuario.dart';
 import 'firebase_options.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'painel_page.dart';
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
+  initializeDateFormatting().then((_) async {
   await Firebase.initializeApp( options: DefaultFirebaseOptions.currentPlatform);
   userController
       .efetuarLogin(
@@ -25,8 +27,9 @@ Future<void> main() async {
     }
   });
   runApp(const MyApp());
-
+});
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

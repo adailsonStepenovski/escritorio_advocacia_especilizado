@@ -1,4 +1,5 @@
 class Socios {
+   String? id;
    String nome;
   String foto;
   String telefone;
@@ -10,11 +11,12 @@ class Socios {
 
   @override
   String toString() {
-    return 'Usuario{nome: $nome,foto: $foto,  telefone: $telefone, funcao:$funcao,descricao: $descricao,  created_at: $createdAt, updated_at: $updatedAt, deleted_at: $deletedAt}';
+    return 'Usuario{id: $id,nome: $nome,foto: $foto,  telefone: $telefone, funcao:$funcao,descricao: $descricao,  created_at: $createdAt, updated_at: $updatedAt, deleted_at: $deletedAt}';
   }
 
   Socios(
       {
+         this.id,
         required this.nome,
         required this.telefone,
         required this.funcao,
@@ -26,6 +28,7 @@ class Socios {
 
   Map<String, dynamic> toMap() {
     return {
+      "id": id,
       "descricao": descricao,
       "nome": nome,
       "telefone": telefone,
@@ -39,6 +42,7 @@ class Socios {
 
    factory Socios.fromMap(dynamic map) {
      return Socios(
+       id: map["id"],
       descricao: map["descricao"],
        funcao: map["funcao"],
       nome: map["nome"],

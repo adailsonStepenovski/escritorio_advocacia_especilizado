@@ -1,6 +1,7 @@
+import 'package:escritorio_advocacia_especilizado/utils/widgets/colors_customs.dart';
 import 'package:escritorio_advocacia_especilizado/windows/administrativo/pages/agenda/widgets/agenda_list_item.dart';
 import 'package:escritorio_advocacia_especilizado/windows/administrativo/pages/cadastros/cadastrar_evento.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -8,11 +9,9 @@ import 'dart:collection';
 import '../../../../core/controllers/events_controller.dart';
 import '../../../../core/models/eventos.dart';
 import '../../../../utils/calendario/calendario_day.dart';
-import '../../../../utils/calendario/format_date_time.dart';
-import '../../../../utils/calendario/separar_por datas.dart';
 import '../../../../utils/contantes.dart';
 import '../../../../utils/widgets/custom_text.dart';
-import 'widgets/calendario_header.dart';
+import '../../../../utils/widgets/font_style.dart';
 
 class AgendaPage extends StatefulWidget {
   const AgendaPage({super.key});
@@ -26,29 +25,20 @@ class _AgendaPageState extends State<AgendaPage> {
   final ValueNotifier<DateTime> _focusedDay = ValueNotifier(DateTime.now());
   final Set<DateTime> _selectedDays = LinkedHashSet<DateTime>(
     equals: isSameDayCustoms,
-    hashCode: (dateTime) => dateTime.hashCode, // Usando o hashCode padrão
+    hashCode: (dateTime) => dateTime.hashCode,
   );
 
-  late final EventsService _eventsService; // Instância do serviço de eventos
+  late final EventsService _eventsService;
 
-  late PageController _pageController;
   CalendarFormat _calendarFormat = CalendarFormat.month;
-  RangeSelectionMode _rangeSelectionMode = RangeSelectionMode.toggledOff;
-  DateTime? _rangeStart;
-  DateTime? _rangeEnd;
-
-  late Map<DateTime, bool>
-      _isOpenMap; // Mapa para armazenar o estado de abertura de cada dia
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
     _selectedDays.add(_focusedDay.value);
     _selectedEvents = ValueNotifier([]);
-    _eventsService = EventsService(); // Inicializa o serviço de eventos
-    _isOpenMap = {}; // Inicializa o mapa de estado de abertura
-    _loadEvents(); // Carrega os eventos iniciais
+    _eventsService = EventsService();
+    _loadEvents();
   }
 
   @override
@@ -75,114 +65,53 @@ class _AgendaPageState extends State<AgendaPage> {
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
-      if (_selectedDays.contains(selectedDay)) {
-        _selectedDays.remove(selectedDay);
-      } else {
-        _selectedDays.add(selectedDay);
-      }
-
-      _focusedDay.value = focusedDay;
-      _rangeStart = null;
-      _rangeEnd = null;
-      _rangeSelectionMode = RangeSelectionMode.toggledOff;
-    });
-
-    _selectedEvents.value = _getEventsForDay(selectedDay);
-  }
-
-  List<Evento> _getEventsForRange(DateTime start, DateTime end) {
-    return _selectedEvents.value.where((evento) {
-      return evento.dataInicio!
-              .isAfter(start.subtract(const Duration(days: 1))) &&
-          evento.dataInicio!.isBefore(end.add(const Duration(days: 1)));
-    }).toList();
-  }
-
-  void _onRangeSelected(DateTime? start, DateTime? end, DateTime focusedDay) {
-    setState(() {
-      _focusedDay.value = focusedDay;
-      _rangeStart = start;
-      _rangeEnd = end;
       _selectedDays.clear();
-      _rangeSelectionMode = RangeSelectionMode.toggledOn;
+      _selectedDays.add(selectedDay);
+      _focusedDay.value = focusedDay;
     });
-
-    if (start != null && end != null) {
-      _selectedEvents.value = _getEventsForRange(start, end);
-    } else if (start != null) {
-      _selectedEvents.value = _getEventsForDay(start);
-    } else if (end != null) {
-      _selectedEvents.value = _getEventsForDay(end);
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
-          width: width(context: context, size: 0.4),
-          child: Column(
-            children: [
-              ValueListenableBuilder<DateTime>(
-                valueListenable: _focusedDay,
-                builder: (context, value, _) {
-                  return CalendarHeader(
-                    focusedDay: value,
-                    clearButtonVisible: _selectedDays.isNotEmpty ||
-                        _rangeStart != null ||
-                        _rangeEnd != null,
-                    onTodayButtonTap: () {
-                      setState(() => _focusedDay.value = DateTime.now());
-                    },
-                    onClearButtonTap: () {
-                      setState(() {
-                        _rangeStart = null;
-                        _rangeEnd = null;
-                        _selectedDays.clear();
-                        _selectedEvents.value = [];
-                      });
-                    },
-                    onLeftArrowTap: () {
-                      _pageController.previousPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeOut,
-                      );
-                    },
-                    onRightArrowTap: () {
-                      _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeOut,
-                      );
-                    },
-                  );
-                },
-              ),
-              TableCalendar<Evento>(
-                firstDay: firstDay,
-                lastDay: lastDay,
-                focusedDay: _focusedDay.value,
-                headerVisible: false,
-                selectedDayPredicate: (day) => _selectedDays.contains(day),
-                rangeStartDay: _rangeStart,
-                rangeEndDay: _rangeEnd,
-                calendarFormat: _calendarFormat,
-                rangeSelectionMode: _rangeSelectionMode,
-                eventLoader: _getEventsForDay,
-                holidayPredicate: (day) {
-                  return day.day == 20;
-                },
-                onDaySelected: _onDaySelected,
-                onRangeSelected: _onRangeSelected,
-                onCalendarCreated: (controller) => _pageController = controller,
-                onPageChanged: (focusedDay) => _focusedDay.value = focusedDay,
-                onFormatChanged: (format) {
-                  if (_calendarFormat != format) {
-                    setState(() => _calendarFormat = format);
-                  }
-                },
-              ),
-            ],
+        Padding(
+          padding: EdgeInsets.only(top: height(context: context, size: 0.1)),
+          child: SizedBox(
+            width: width(context: context, size: 0.4),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                TableCalendar<Evento>(
+                  firstDay: DateTime(
+                      DateTime.now().year, DateTime.now().month - 12, 1),
+                  lastDay: DateTime(
+                      DateTime.now().year, DateTime.now().month + 12, 0),
+                  locale: 'pt_BR',
+                  rowHeight: 75, daysOfWeekHeight: 75,
+                  calendarStyle:
+                      CalendarStyle(defaultTextStyle: fontOldStandardTt(fontSize: 32)),
+                  headerStyle: HeaderStyle(
+                      titleTextStyle: fontOldStandardTt(
+                          fontSize: 36, color: CustomColors.primary)),
+                  daysOfWeekStyle: DaysOfWeekStyle(
+                      weekdayStyle: fontOldStandardTt(
+                          fontSize: 20, color: CustomColors.primary),
+                      weekendStyle: fontOldStandardTt(fontSize: 20, color: CustomColors.red)),
+                  focusedDay: _focusedDay.value,
+                  selectedDayPredicate: (day) => _selectedDays.contains(day),
+                  eventLoader: _getEventsForDay,
+                  calendarFormat: _calendarFormat,
+                  onFormatChanged: (format) {
+                    if (_calendarFormat != format) {
+                      setState(() => _calendarFormat = format);
+                    }
+                  },
+                  onPageChanged: (focusedDay) => _focusedDay.value = focusedDay,
+                  onDaySelected: _onDaySelected,
+                ),
+              ],
+            ),
           ),
         ),
         Expanded(
@@ -190,7 +119,12 @@ class _AgendaPageState extends State<AgendaPage> {
           child: ValueListenableBuilder<List<Evento>>(
             valueListenable: _selectedEvents,
             builder: (context, events, _) {
-              var groupedEvents = groupEventsByDay(events);
+              final eventsForSelectedDay = events
+                  .where((evento) =>
+                      evento.dataInicio!.year == _focusedDay.value.year &&
+                      evento.dataInicio!.month == _focusedDay.value.month &&
+                      evento.dataInicio!.day == _focusedDay.value.day)
+                  .toList();
 
               return Column(
                 children: [
@@ -224,42 +158,10 @@ class _AgendaPageState extends State<AgendaPage> {
                   Expanded(
                     // Adicionando Expanded aqui
                     child: ListView.builder(
-                      itemCount: groupedEvents.length,
+                      itemCount: eventsForSelectedDay.length,
                       itemBuilder: (context, index) {
-                        var eventosNoDia = groupedEvents[index];
-                        var dia = eventosNoDia.first.dataInicio!.day;
-                        var mes = eventosNoDia.first.dataInicio!.month;
-
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 8.0, bottom: 8.0, left: 32.0),
-                              child: TextBold(
-                                text: '$dia  ${mesPorExtenso(mes)}',
-                                fontSize: 24.0,
-                                onTap: () {
-                                  setState(() {
-                                    // Toggle isOpen for the current day
-                                    _isOpenMap.update(
-                                      eventosNoDia.first.dataInicio!,
-                                      (value) => !value,
-                                      ifAbsent: () => true,
-                                    );
-                                  });
-                                },
-                              ),
-                            ),
-                            // Lista de eventos para esse dia
-                            if (_isOpenMap[eventosNoDia.first.dataInicio!] ??
-                                true) // Verifica se o dia está aberto no mapa
-                              ...eventosNoDia
-                                  .map((evento) =>
-                                      AgendaListItem(evento: evento))
-                                  .toList(),
-                          ],
-                        );
+                        final evento = eventsForSelectedDay[index];
+                        return AgendaListItem(evento: evento);
                       },
                     ),
                   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'colors_customs.dart';
+import 'font_style.dart';
 
 
 class TextRegular extends StatelessWidget {
@@ -30,13 +30,11 @@ class TextRegular extends StatelessWidget {
         onTap: onTap,
         child: Text(text!,
             textAlign: textAlign ?? TextAlign.left,
-            style: GoogleFonts.oldStandardTt(
+            style: fontOldStandardTt(
                 color: fontColor ?? CustomColors.textBlack,
                 fontSize: fontSize,fontWeight: FontWeight.w500,
                 fontStyle: fontStyle ?? FontStyle.normal,
-                decoration: underline!
-                    ? TextDecoration.underline
-                    : TextDecoration.none)));
+             )));
   }
 }
 
@@ -66,13 +64,11 @@ class TextLight extends StatelessWidget {
         onTap: onTap,
         child: Text(text!,
             textAlign: textAlign ?? TextAlign.left,
-            style: GoogleFonts.oldStandardTt(
+            style: fontOldStandardTt(
                 color: fontColor ?? CustomColors.textBlack,
                 fontSize: fontSize,fontWeight: FontWeight.w300,
                 fontStyle: fontStyle ?? FontStyle.normal,
-                decoration: underline!
-                    ? TextDecoration.underline
-                    : TextDecoration.none)));
+                )));
   }
 }
 
@@ -102,13 +98,11 @@ class TextThin extends StatelessWidget {
         onTap: onTap,
         child: Text(text!,
             textAlign: textAlign ?? TextAlign.left,
-            style:  GoogleFonts.oldStandardTt(
+            style:  fontOldStandardTt(
                 color: fontColor ?? CustomColors.textBlack,
                 fontSize: fontSize,fontWeight: FontWeight.w100,
                 fontStyle: fontStyle ?? FontStyle.normal,
-                decoration: underline!
-                    ? TextDecoration.underline
-                    : TextDecoration.none)));
+                )));
   }
 }
 
@@ -138,13 +132,11 @@ class TextMedium extends StatelessWidget {
         onTap: onTap,
         child: Text(text!,
             textAlign: textAlign ?? TextAlign.left,
-            style:  GoogleFonts.oldStandardTt(
+            style:  fontOldStandardTt(
                 color: fontColor ?? CustomColors.textBlack,
                 fontSize: fontSize,fontWeight: FontWeight.w500,
                 fontStyle: fontStyle ?? FontStyle.normal,
-                decoration: underline!
-                    ? TextDecoration.underline
-                    : TextDecoration.none)));
+               )));
   }
 }
 
@@ -174,13 +166,11 @@ class TextBold extends StatelessWidget {
         onTap: onTap,
         child: Text(text!,
             textAlign: textAlign ?? TextAlign.left,
-            style:  GoogleFonts.oldStandardTt(
+            style:  fontOldStandardTt(
                 color: fontColor ?? CustomColors.textBlack,
                 fontSize: fontSize,
                 fontStyle: fontStyle ?? FontStyle.normal,fontWeight: FontWeight.w700,
-                decoration: underline!
-                    ? TextDecoration.underline
-                    : TextDecoration.none)));
+                )));
   } }class TextExtraBold extends StatelessWidget {
   const TextExtraBold(
       {this.onTap,
@@ -207,12 +197,10 @@ class TextBold extends StatelessWidget {
         onTap: onTap,
         child: Text(text!,
             textAlign: textAlign ?? TextAlign.left,
-            style:  GoogleFonts.oldStandardTt(
+            style:  fontOldStandardTt(
                 color: fontColor ?? CustomColors.textBlack,
                 fontSize: fontSize,fontWeight: FontWeight.w900,
                 fontStyle: fontStyle ?? FontStyle.normal,
-                decoration: underline!
-                    ? TextDecoration.underline
-                    : TextDecoration.none)));
+                )));
   }
 }

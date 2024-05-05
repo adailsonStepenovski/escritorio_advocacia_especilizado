@@ -14,3 +14,5 @@ final CollectionReference faleConoscoCollection =
 FirebaseFirestore.instance.collection('fale_conosco');
 final CollectionReference eventosCollection =
 FirebaseFirestore.instance.collection('eventos');
+final CollectionReference clientesCollection =
+FirebaseFirestore.instance.collection('clientes');

@@ -1,21 +1,24 @@
 class AreasAtuacao {
    String nome;
+   String? id;
    String descricao;
 
   @override
   String toString() {
-    return 'Usuario{nome: $nome, descricao: $descricao,}';
+    return 'Usuario{nome: $nome, id: $id, descricao: $descricao,}';
   }
 
   AreasAtuacao(
       {
         required this.nome,
+         this.id,
         required this.descricao,});
 
   Map<String, dynamic> toMap() {
     return {
       "descricao": descricao,
       "nome": nome,
+      "id": id,
     };
   }
 
@@ -23,6 +26,7 @@ class AreasAtuacao {
      return AreasAtuacao(
       descricao: map["descricao"],
        nome: map["nome"],
+       id: map["id"],
     );
   }
 //

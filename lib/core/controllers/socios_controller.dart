@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/socios.dart';
 import '../references/references_firebase.dart';
@@ -11,13 +12,23 @@ class SocioService {
     });
   }
 
-
-  Future<void> adicionarSocio(Socios socio) {
-    return sociosCollection.add(socio.toMap());
+  Future<void> adicionarSocio(Socios socio) async {
+    DocumentReference docRef = await sociosCollection.add(socio.toMap());
+    editarSocios(docRef.id, socio);
   }
 
-  Future<void> editarSocio(String id, Socios socio) {
-    return sociosCollection.doc(id).update(socio.toMap());
+  Future<void> editarSocios(String id, Socios socio) {
+    Socios sobreEdit = Socios(
+        descricao: socio.descricao,
+        foto: socio.foto,
+        id: id,
+        funcao: socio.funcao,
+        nome: socio.nome,
+        createdAt: socio.createdAt,
+        telefone: socio.telefone,
+        deletedAt: socio.deletedAt,
+        updatedAt: socio.updatedAt);
+    return sobreCollection.doc(id).update(sobreEdit.toMap());
   }
 
   Future<void> deletarSocio(String id) {

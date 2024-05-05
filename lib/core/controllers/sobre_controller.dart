@@ -1,6 +1,8 @@
 
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../models/sobre.dart';
 import '../references/references_firebase.dart';
 
@@ -14,12 +16,22 @@ class SobreService {
   }
 
 
-  Future<void> adicionarSobre(Sobre sobre) {
-    return sobreCollection.add(sobre.toMap());
+  Future<void> adicionarSobre(Sobre sobre) async {
+    DocumentReference docRef = await sobreCollection.add(sobre.toMap());
+    editarSobre(docRef.id, sobre);
   }
 
-  Future<void> editarSocio(String id, Sobre sobre) {
-    return sobreCollection.doc(id).update(sobre.toMap());
+  Future<void> editarSobre(String id, Sobre sobre) {
+    Sobre sobreEdit = Sobre(
+        descricao: sobre.descricao,
+        titulo: sobre.titulo,
+        id: id,
+        createdAt: sobre.createdAt,
+        subtitulo: sobre.subtitulo,
+        deletedAt: sobre.deletedAt,
+        updatedAt: sobre.updatedAt);
+    return sobreCollection.doc(id).update(sobreEdit.toMap());
+
   }
 
   Future<void> deletarSobre(String id) {

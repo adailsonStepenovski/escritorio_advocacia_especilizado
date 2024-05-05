@@ -13,14 +13,21 @@ import 'package:mdi/mdi.dart';
 import 'pages/area_trabalho.dart';
 
 class HomePageAdm extends StatefulWidget {
-  const HomePageAdm({super.key});
+  final int? pageSelected;
+  const HomePageAdm({super.key, this.pageSelected});
 
   @override
   State<HomePageAdm> createState() => _HomePageAdmState();
 }
 
 class _HomePageAdmState extends State<HomePageAdm> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.pageSelected ?? 0;
+  }
 
   static const List<Widget> _widgetOptions = <Widget>[
     AreaTrabalhoPage(label: 'Dashboard 1'),

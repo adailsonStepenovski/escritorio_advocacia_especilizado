@@ -41,6 +41,7 @@ class UIAppButton extends StatelessWidget {
 
     return SizedBox(
         height: buttonHeight ?? 148,
+        width: buttonWidth ?? 148,
         child: TextButton(
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.resolveWith<Color>(

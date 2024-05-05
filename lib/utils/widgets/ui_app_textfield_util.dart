@@ -38,4 +38,12 @@ class APPTextFieldUtil {
             required: true);
     }
   }
+}class TextFieldConfig {
+  String? label;
+  Widget? icon;
+  bool? isRequired;
+  Widget? suffixIcon;
+
+  TextFieldConfig({this.label, this.icon, this.isRequired, this.suffixIcon});
 }
+
